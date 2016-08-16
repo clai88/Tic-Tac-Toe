@@ -1,23 +1,21 @@
+require 'pry'
 class TicTacToe
   def initialize
-    @board = Array.new(3) { Array.new(3, " ") }
-
-  end
-
-  def board
+    @board = Array.new(9, " ")
   end
 
   def print_board
-    row = [0,1,2]
-    column = [0,1,2]
+    print "-----------\n"
+    print " #{@board[0]} | #{@board[1]} | #{@board[2]} \n"
+    print "-----------\n"
+    print " #{@board[3]} | #{@board[4]} | #{@board[5]} \n"
+    print "-----------\n"
+    print " #{@board[6]} | #{@board[7]} | #{@board[8]} \n"
+  end
 
-    row.each do |r|
-      column.each do |c|
-        @board[r][c] = ":)"
-      end
-    end
-    print @board
+  def valid?(index)
+    p !@board[index]
   end
 end
 
-a = TicTacToe.new.print_board
+# a = TicTacToe.new.print_board
