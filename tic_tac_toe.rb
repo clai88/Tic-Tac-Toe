@@ -20,6 +20,7 @@ class TicTacToe
     end
     @valid_moves = @board.map{|x| x}
   end
+
   def print_board
     print " #{@board[0]} | #{@board[1]} | #{@board[2]} \n"
     print "-------------\n"
@@ -61,8 +62,6 @@ class TicTacToe
     else
       puts "Tie game!"
     end
-    puts "do you wanna play again?(y/n)"
-    gets.chomp == "y" ? start : nil
   end
 
   def valid?(move)

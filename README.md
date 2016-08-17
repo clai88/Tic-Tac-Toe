@@ -1,0 +1,4 @@
+- player class
+- board class
+- computer class < player class
+- game class

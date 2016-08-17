@@ -5,9 +5,6 @@ require "./won"
 require "pry"
 
 class TicTacToeTest < Minitest::Test
-  def test_true
-    assert true
-  end
 
   def test_classes_exist
     assert TicTacToe

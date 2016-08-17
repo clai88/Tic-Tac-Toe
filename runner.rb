@@ -9,14 +9,12 @@ if (answer == "p" || answer == "P")
   a.fill_in_placeholders
   a.print_board
   a.make_a_move
-
 elsif (answer == "c" || answer == "C")
   a = TicTacToeComputer.new
   a.start
   a.fill_in_placeholders
   a.print_board
   a.make_a_move
-
 else
   puts "not a valid option"
 end

@@ -26,7 +26,7 @@ class TicTacToeComputer
   end
 
   def start
-    puts "Welcome! Let's play chess"
+    puts "Welcome! Let's play ttt"
     puts "Enter your name."
     @player = gets.chomp
   end
@@ -60,8 +60,6 @@ class TicTacToeComputer
     else
       puts "Tie game!"
     end
-    puts "do you wanna play again?(y/n)"
-    gets.chomp == "y" ? start : nil
   end
 
   def valid?(move)
@@ -70,9 +68,11 @@ class TicTacToeComputer
 
   def computer_move
     valid_indeces = []
-    for i in (0..@board.length)
-      unless @board[i] == "X " || @board[i] == "O "
-        valid_indeces.push(i)
+    for i in (0...@board.length)
+      unless @board[i] == "X "
+        unless @board[i] == "O "
+          valid_indeces.push(i)
+        end
       end
     end
     return valid_indeces.include?(4) ? 4 : valid_indeces.sample
