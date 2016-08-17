@@ -1,4 +1,4 @@
-class TicTacToe
+class TicTacToeComputer
   attr_reader :board
   def initialize
     @board = Array.new(9, " ")
@@ -34,18 +34,21 @@ class TicTacToe
   def make_a_move
     i=0
     while @board & @valid_moves != [] do
-      player = i % 2 == 0 ? @player : @p2
-      puts "\nPlayer #{player}! Make your move!"
-
-      while true do
-        move = gets.chomp
-        if valid?(move.capitalize)
-          index = @valid_moves.index(move.capitalize)
-          player == @player ? @board[index] = "X ": @board[index] = "O "
-          break
-        else
-          puts "Bad move. Please guess again"
+      puts "\nPlayer #{@player}! Make your move!"
+      if i % 2 == 0
+        while true do
+          move = gets.chomp
+          if valid?(move.capitalize)
+            index = @valid_moves.index(move.capitalize)
+            @board[index] = "X "
+            break
+          else
+            puts "Bad move. Please guess again"
+          end
         end
+      else
+        @board[computer_move] = "O "
+        puts "Computer Moved"
       end
       i+=1
       print_board
@@ -53,7 +56,7 @@ class TicTacToe
     end
 
     if Won.won?(@board)
-      puts i%2 == 0 ? "#{@p2} wins" : "#{@player} wins."
+      puts i%2 == 0 ? "Computer wins" : "#{@player} wins."
     else
       puts "Tie game!"
     end
@@ -63,5 +66,15 @@ class TicTacToe
 
   def valid?(move)
     @valid_moves.index(move.capitalize) && @board.include?(move)
+  end
+
+  def computer_move
+    valid_indeces = []
+    for i in (0..@board.length)
+      unless @board[i] == "X " || @board[i] == "O "
+        valid_indeces.push(i)
+      end
+    end
+    return valid_indeces.include?(4) ? 4 : valid_indeces.sample
   end
 end
