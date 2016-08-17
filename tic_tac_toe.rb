@@ -28,7 +28,7 @@ class TicTacToe
 
   def make_a_move
     i=0
-    while i < 9 do
+    while @board & @valid_moves != [] do
       player = i % 2 == 0 ? @p1 : @p2
       puts "Player #{player}! Make your move!"
       move = gets.chomp
@@ -42,7 +42,13 @@ class TicTacToe
       print_board
       break if won?
     end
-    puts "the game has ended"
+    if i % 2 == 0 && won?
+      puts "#{@p2} you are the winner."
+    elsif won?
+      puts "#{@p1} you are the winner."
+    else
+      puts "Tie game!"
+    end
   end
 
   def won?
@@ -52,6 +58,17 @@ class TicTacToe
     [0,3,6].each do |i|
       j = ""
       [i,i+1,i+2].each {|k| j+= @board[k]}
+      return true if j == x || j == o
+      j = ""
+      [i,i+4,i+8].each {|k| j+= @board[k]} if i == 0
+      return true if j == x || j == o
+    end
+    #vertical
+    [0,1,2].each do |i|
+      j = ""
+      [i,i+3,i+6].each {|k| j+= @board[k]}
+      return true if j == x || j == o
+      [i,i+2,i+4].each {|k| j+= @board[k]} if i == 0
       return true if j == x || j == o
     end
     return false
