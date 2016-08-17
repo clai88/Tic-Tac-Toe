@@ -30,13 +30,17 @@ class TicTacToe
     i=0
     while @board & @valid_moves != [] do
       player = i % 2 == 0 ? @p1 : @p2
-      puts "Player #{player}! Make your move!"
-      move = gets.chomp
-      if valid?(move)
-        index = @valid_moves.index(move.capitalize)
-        player == @p1 ? @board[index] = "X ": @board[index] = "O "
-      else
-        puts "bad move"
+      puts "\nPlayer #{player}! Make your move!"
+
+      while true do
+        move = gets.chomp
+        if valid?(move.capitalize)
+          index = @valid_moves.index(move.capitalize)
+          player == @p1 ? @board[index] = "X ": @board[index] = "O "
+          break
+        else
+          puts "Bad move. Please guess again"
+        end
       end
       i+=1
       print_board
@@ -83,16 +87,10 @@ class TicTacToe
 
 
   def start
-      puts "Welcome! Let's play chess"
-      puts "Player 1. Enter your name."
-      @p1 = gets.chomp
-      puts "Player 2. Enter your name."
-      @p2 = gets.chomp
-      fill_in_placeholders
-      print_board
-      make_a_move
+    puts "Welcome! Let's play chess"
+    puts "Player 1. Enter your name."
+    @p1 = gets.chomp
+    puts "Player 2. Enter your name."
+    @p2 = gets.chomp
   end
 end
-
-a = TicTacToe.new
-# p a.valid?("0")
