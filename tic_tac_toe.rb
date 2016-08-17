@@ -28,24 +28,33 @@ class TicTacToe
 
   def make_a_move
     i=0
-    while true do
+    while i < 9 do
       player = i % 2 == 0 ? @p1 : @p2
       puts "Player #{player}! Make your move!"
       move = gets.chomp
       index = valid?(move)
       if valid?(move)
-        player == @p1 ? @board[index] = "X": @board[index] = "O"
+        player == @p1 ? @board[index] = "X ": @board[index] = "O "
       else
         puts "Unfortunately, you have guessed an invalid square and wasted your turn."
       end
       i+=1
       print_board
-      break unless won?
+      break if won?
     end
+    puts "the game has ended"
   end
 
   def won?
-
+    x = "X X X "
+    o = "O O O "
+    #horizontal
+    [0,3,6].each do |i|
+      j = ""
+      [i,i+1,i+2].each {|k| j+= @board[k]}
+      return true if j == x || j == o
+    end
+    return false
   end
 
   def valid?(move)
