@@ -1,6 +1,3 @@
-require 'pry'
-require './won'
-
 class TicTacToe
   attr_reader :board
   def initialize
@@ -30,23 +27,21 @@ class TicTacToe
 
   def start
     puts "Welcome! Let's play chess"
-    puts "Player 1. Enter your name."
-    @p1 = gets.chomp
-    puts "Player 2. Enter your name."
-    @p2 = gets.chomp
+    puts "Enter your name."
+    @player = gets.chomp
   end
 
   def make_a_move
     i=0
     while @board & @valid_moves != [] do
-      player = i % 2 == 0 ? @p1 : @p2
+      player = i % 2 == 0 ? @player : @p2
       puts "\nPlayer #{player}! Make your move!"
 
       while true do
         move = gets.chomp
         if valid?(move.capitalize)
           index = @valid_moves.index(move.capitalize)
-          player == @p1 ? @board[index] = "X ": @board[index] = "O "
+          player == @player ? @board[index] = "X ": @board[index] = "O "
           break
         else
           puts "Bad move. Please guess again"
@@ -56,8 +51,9 @@ class TicTacToe
       print_board
       break if Won.won?(@board)
     end
+
     if Won.won?(@board)
-      puts i%2 == 0 ? "#{@p2} wins" : "#{@p1} wins."
+      puts i%2 == 0 ? "#{@p2} wins" : "#{@player} wins."
     else
       puts "Tie game!"
     end
