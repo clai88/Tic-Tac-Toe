@@ -32,8 +32,8 @@ class TicTacToe
       player = i % 2 == 0 ? @p1 : @p2
       puts "Player #{player}! Make your move!"
       move = gets.chomp
-      index = valid?(move)
       if valid?(move)
+        index = @valid_moves.index(move)
         player == @p1 ? @board[index] = "X ": @board[index] = "O "
       else
         puts "Unfortunately, you have guessed an invalid square and wasted your turn."
@@ -47,6 +47,8 @@ class TicTacToe
     else
       puts "Tie game!"
     end
+    puts "do you wanna play again?(y/n)"
+    gets.chomp == "y" ? start : nil
   end
 
   def won?
@@ -76,18 +78,18 @@ class TicTacToe
   end
 
   def valid?(move)
-    @valid_moves.index(move)
+    @valid_moves.index(move) && @board.include?(move)
   end
 
   def start
-    puts "Welcome! Let's play chess"
-    puts "Player 1. Enter your name."
-    @p1 = gets.chomp
-    puts "Player 2. Enter your name."
-    @p2 = gets.chomp
-    fill_in_placeholders
-    print_board
-    make_a_move
+      puts "Welcome! Let's play chess"
+      puts "Player 1. Enter your name."
+      @p1 = gets.chomp
+      puts "Player 2. Enter your name."
+      @p2 = gets.chomp
+      fill_in_placeholders
+      print_board
+      make_a_move
   end
 end
 
