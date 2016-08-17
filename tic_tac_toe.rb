@@ -55,9 +55,9 @@ class TicTacToe
       end
       i += 1
       print_board
-      break if Won.won?(@board)
+      break if Won.winner?(@board)
     end
-    if Won.won?(@board)
+    if Won.winner?(@board)
       puts i.even? ? "#{@p2} wins" : "#{@p1} wins."
     else
       puts 'Tie game!'
