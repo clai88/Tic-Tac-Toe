@@ -33,10 +33,10 @@ class TicTacToe
       puts "Player #{player}! Make your move!"
       move = gets.chomp
       if valid?(move)
-        index = @valid_moves.index(move)
+        index = @valid_moves.index(move.capitalize)
         player == @p1 ? @board[index] = "X ": @board[index] = "O "
       else
-        puts "Unfortunately, you have guessed an invalid square and wasted your turn."
+        puts "bad move"
       end
       i+=1
       print_board
@@ -49,6 +49,10 @@ class TicTacToe
     end
     puts "do you wanna play again?(y/n)"
     gets.chomp == "y" ? start : nil
+  end
+
+  def valid?(move)
+    @valid_moves.index(move.capitalize) && @board.include?(move)
   end
 
   def won?
@@ -77,9 +81,6 @@ class TicTacToe
     return false
   end
 
-  def valid?(move)
-    @valid_moves.index(move) && @board.include?(move)
-  end
 
   def start
       puts "Welcome! Let's play chess"
