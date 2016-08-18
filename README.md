@@ -4,8 +4,6 @@ Play with no shame. <br>
 Play against a computer, <br>
 or with the person with which you came. <br>
 
- <br>
-
 The computer is good, <br>
 but not as good as erik. <br>
 If you lose, <br>
