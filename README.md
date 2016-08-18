@@ -1,4 +1,4 @@
-- player class
 - board class
+- player class
 - computer class < player class
 - game class

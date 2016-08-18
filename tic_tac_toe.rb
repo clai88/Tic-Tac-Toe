@@ -8,7 +8,7 @@ class TicTacToe
   end
 
   def fill_in_placeholders
-    for i in (0..9)
+    9.times do |i|
       case i
       when 0..2
         @board[i] = "A#{i + 1}"

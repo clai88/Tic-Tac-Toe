@@ -53,10 +53,10 @@ class TicTacToeComputer
       end
       i += 1
       print_board
-      break if Won.won?(@board)
+      break if Won.winner?(@board)
     end
 
-    if Won.won?(@board)
+    if Won.winner?(@board)
       puts i.even? ? 'Computer wins' : "#{@player} wins."
     else
       puts 'Tie game!'
