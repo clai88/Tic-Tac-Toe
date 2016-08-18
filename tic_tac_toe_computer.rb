@@ -46,6 +46,17 @@ class TicTacToeComputer < TicTacToe
         valid_indeces.push(i) unless @board[i] == 'O '
       end
     end
-    valid_indeces.include?(4) ? 4 : valid_indeces.sample
+    valid_indeces.include?(4) ? 4 : smart_move(valid_indeces)
+  end
+
+  def smart_move(valid_indeces)
+    valid_indeces.each do |i|
+      play_board = @board.dup
+      play_board[i] = "X "
+      return i if Won.winner?(play_board)
+      play_board[i] = "O "
+      return i if Won.winner?(play_board)
+    end
+    valid_indeces.sample
   end
 end
