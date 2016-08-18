@@ -11,8 +11,8 @@ class TicTacToeComputer < TicTacToe
   def make_a_move
     i = 0
     while @board & @valid_moves != []
-      puts "\nPlayer #{@player}! Make your move!"
       if i.even?
+        puts "\nPlayer #{@player}! Make your move!"
         loop do
           move = gets.chomp
           if valid?(move.capitalize)
@@ -57,6 +57,13 @@ class TicTacToeComputer < TicTacToe
       play_board[i] = "O "
       return i if Won.winner?(play_board)
     end
-    valid_indeces.sample
+    return check_tricky_corner(valid_indeces) != [] ? check_tricky_corner(valid_indeces): valid_indeces.sample
+  end
+
+  def check_tricky_corner(valid_indeces)
+    if @board[0] == 'X ' && @board[8] ||
+      @board[2] == 'X ' && @board[6]
+      return ([1,3,5,7] & valid_indeces).sample
+    end
   end
 end
