@@ -1,7 +1,7 @@
 require './tic_tac_toe'
 
+# tictactoe computer class
 class TicTacToeComputer < TicTacToe
-
   def start
     puts "Welcome! Let's play tic tac toe"
     puts 'Enter your name.'
@@ -62,8 +62,8 @@ class TicTacToeComputer < TicTacToe
 
   def check_tricky_corner(valid_indeces)
     if @board[0] == 'X ' && @board[8] ||
-      @board[2] == 'X ' && @board[6]
-      return ([1,3,5,7] & valid_indeces).sample
+       @board[2] == 'X ' && @board[6]
+      return ([1, 3, 5, 7] & valid_indeces).sample
     end
   end
 end

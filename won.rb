@@ -7,15 +7,15 @@ module Won
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6],
+    [2, 4, 6]
   ].freeze
 
   def self.winner?(board)
     x = ["X ", "X ", "X "]
     o = ["O ", "O ", "O "]
     POSSIBLE_SOLUTIONS.each do |sol|
-      solution = board.values_at(sol[0],sol[1],sol[2])
-      return true if solution == x or solution == o
+      solution = board.values_at(sol[0], sol[1], sol[2])
+      return true if solution == x || solution == o
     end
     false
   end
