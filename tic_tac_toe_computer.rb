@@ -33,7 +33,18 @@ class TicTacToeComputer < TicTacToe
     end
 
     if Won.winner?(@board)
-      puts i.even? ? 'Computer wins' : "#{@player} wins."
+      puts i.even? ? 'Computer wins
+        .---.__
+       /  /6|__\
+       \  \/--`
+       /  \\
+      /    )\
+     /  _.\' /
+    //~`\\-\'
+ =====//===(=))========= '
+
+
+      : "#{@player} wins."
     else
       puts 'Tie game!'
     end
