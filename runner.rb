@@ -12,10 +12,11 @@ if (answer == "p" || answer == "P")
   PrintBoard::print_board(a.board)
   a.make_a_move
 elsif (answer == "c" || answer == "C")
-  a = TicTacToeComputer.new
+  b = Board.new
+  b.fill_in_placeholders
+  a = TicTacToeComputer.new(b.board,b.valid_moves)
   a.start
-  a.fill_in_placeholders
-  a.print_board
+  PrintBoard::print_board(a.board)
   a.make_a_move
 else
   puts "not a valid option"

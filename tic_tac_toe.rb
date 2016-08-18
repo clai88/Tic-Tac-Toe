@@ -40,7 +40,7 @@ class TicTacToe
   end
 
   def start
-    puts "Welcome! Let's play chess"
+    puts "Welcome! Let's play tic tac toe"
     puts 'Player 1. Enter your name.'
     @p1 = gets.chomp
     puts 'Player 2. Enter your name.'
