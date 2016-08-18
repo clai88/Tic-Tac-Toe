@@ -22,6 +22,7 @@ end
 
 module PrintBoard
   def self.print_board(board)
+    system "clear"
     print " #{board[0]} | #{board[1]} | #{board[2]} \n"
     print "-------------\n"
     print " #{board[3]} | #{board[4]} | #{board[5]} \n"

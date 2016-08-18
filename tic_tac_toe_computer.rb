@@ -65,5 +65,6 @@ class TicTacToeComputer < TicTacToe
        @board[2] == 'X ' && @board[6]
       return ([1, 3, 5, 7] & valid_indeces).sample
     end
+    []
   end
 end
