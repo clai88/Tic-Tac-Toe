@@ -2,6 +2,7 @@ require './tic_tac_toe'
 require './tic_tac_toe_computer'
 require './board'
 
+puts "Welcome to tic-tac-toe!"
 puts "Do you want to play against another person or against a computer?(p/c)"
 answer = gets.chomp
 if answer == "p" || answer == "P"
