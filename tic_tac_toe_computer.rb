@@ -61,14 +61,27 @@ class TicTacToeComputer < TicTacToe
   end
 
   def smart_move(valid_indeces)
+    # try_to_win(valid_indeces, "O ")
+    valid_indeces.each do |i|
+      play_board = @board.dup
+      play_board[i] = "O "
+      return i if Won.winner?(play_board)
+    end
+
     valid_indeces.each do |i|
       play_board = @board.dup
       play_board[i] = "X "
       return i if Won.winner?(play_board)
-      play_board[i] = "O "
-      return i if Won.winner?(play_board)
     end
     return check_tricky_corner(valid_indeces) != [] ? check_tricky_corner(valid_indeces): valid_indeces.sample
+  end
+
+  def try_to_win(available,piece)
+    available.each do |i|
+      play_board = @board.dup
+      play_board[i] = piece
+      return i if Won.winner?(play_board)
+    end
   end
 
   def check_tricky_corner(valid_indeces)
